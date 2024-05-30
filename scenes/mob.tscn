@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://duhgec6a887yv"]
+
+[ext_resource type="Script" path="res://scripts/mob.gd" id="1_3hwi0"]
+[ext_resource type="Texture2D" uid="uid://cg5wkv6rxum3u" path="res://art/enemyFlyingAlt_1.png" id="1_yp8w3"]
+[ext_resource type="Texture2D" uid="uid://tjgp62qruoom" path="res://art/enemyFlyingAlt_2.png" id="2_kxlup"]
+[ext_resource type="Texture2D" uid="uid://bfsxf4rca5101" path="res://art/enemySwimming_1.png" id="3_hq7ui"]
+[ext_resource type="Texture2D" uid="uid://cc7fx4wr2s4bt" path="res://art/enemySwimming_2.png" id="4_hj36y"]
+[ext_resource type="Texture2D" uid="uid://c7hwmo353n30w" path="res://art/enemyWalking_1.png" id="5_tqsyt"]
+[ext_resource type="Texture2D" uid="uid://dp6fodr7ocs2g" path="res://art/enemyWalking_2.png" id="6_foer1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lu8yy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yp8w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kxlup")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hq7ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hj36y")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tqsyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_foer1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2d5o"]
+radius = 29.0
+height = 140.0
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_3hwi0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_lu8yy")
+animation = &"fly"
+frame = 1
+frame_progress = 0.0110857
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o2d5o")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+metadata/_edit_group_ = true
