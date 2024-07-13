@@ -44,9 +44,8 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2d5o"]
-radius = 29.0
-height = 140.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_11h4k"]
+radius = 27.0
 
 [node name="Mob" type="RigidBody2D"]
 collision_mask = 0
@@ -61,11 +60,10 @@ frame = 1
 frame_progress = 0.0110857
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_o2d5o")
-metadata/_edit_group_ = true
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_11h4k")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

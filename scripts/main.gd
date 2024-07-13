@@ -5,8 +5,8 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_game()
-
+	# new_game()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -19,6 +19,7 @@ func game_over():
 	$HUD.show_game_over()
 	
 func new_game():
+	
 	score = 0
 	$Player.start($StartPosition.position) # Replace with function body.
 	$StartTimer.start()
@@ -39,7 +40,7 @@ func _on_mob_timer_timeout():
 	mob. rotation = direction
 	
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	mob.linear_velocity = velocity.rotated(direction)
+	mob.linear_velocity = velocity.rotated(direction) * 0.5
 	
 	add_child(mob)
 
